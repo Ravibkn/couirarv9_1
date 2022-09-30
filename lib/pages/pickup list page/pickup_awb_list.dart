@@ -10,9 +10,9 @@ import '../routs.dart';
 import 'package:http/http.dart' as http;
 
 class PickupAwbUpdateList extends StatefulWidget {
-  final Map<String, dynamic>? args;
-
-  const PickupAwbUpdateList(this.args, {Key? key}) : super(key: key);
+  // final Map<String, dynamic>? args;
+  final String pickup_id;
+  const PickupAwbUpdateList(this.pickup_id, {Key? key}) : super(key: key);
 
   @override
   State<PickupAwbUpdateList> createState() => _PickupAwbUpdateListState();
@@ -20,23 +20,22 @@ class PickupAwbUpdateList extends StatefulWidget {
 
 class _PickupAwbUpdateListState extends State<PickupAwbUpdateList> {
   List dataList = [];
-  var arguments;
+  // var arguments;
   @override
   void initState() {
     super.initState();
-    arguments = widget.args;
+    // arguments = widget.pickup_id;
 
-    getAppData(arguments);
+    getAppData(widget.pickup_id);
   }
 
   Future<void> getAppData(arguments) async {
     try {
-      print(arguments['pickup_id']);
       var res = await http.post(
           Uri.parse('${baseUrl}rest_api_native/RestController.php'),
           body: {
             "view": "getAwbNumberForPickup",
-            "drs_unique_id": arguments['pickup_id'],
+            "drs_unique_id": arguments,
             "page": "1",
             "listType": "List"
           });
@@ -150,7 +149,7 @@ class _PickupAwbUpdateListState extends State<PickupAwbUpdateList> {
           onTap: () {
             Navigator.pushNamed(context, MyRouts.pickupDetailRout, arguments: {
               "shipment_id": item['shipment_id'],
-              "unique_id": arguments['pickup_id']
+              "unique_id": widget.pickup_id
             });
           },
           child: Container(

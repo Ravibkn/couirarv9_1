@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
         MyRouts.drsDetallHistoryRout: (context) => DrsDetallHistory(),
         MyRouts.homeScreenRout: (context) => HomePage(),
         MyRouts.pickupawbupdatedaterout: (context) => PickupAwbUpdateList(
-            ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>),
+            ModalRoute.of(context)!.settings.arguments as String),
         MyRouts.pickupawbhistoryrout: (context) => PickupAwbHistory(
             ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>),
         MyRouts.pickupdetallHistoryrout: (context) => PickupDetallHistory(

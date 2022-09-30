@@ -92,7 +92,7 @@ class _PickupListState extends State<PickupList> {
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, MyRouts.pickupawbupdatedaterout,
-            arguments: {'pickup_id': drs_unique_id});
+            arguments: drs_unique_id);
       },
       child: Card(
         color: Colors.grey.shade100,
