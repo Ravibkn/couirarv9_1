@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, non_constant_identifier_names, unnecessary_brace_in_string_interps, override_on_non_overriding_member
 
 import 'dart:convert';
 
@@ -35,7 +35,7 @@ class _DrsAwbListState extends State<DrsAwbList> {
     var drs_unique_id = arguments['drs_unique_id'];
 
     var res = await http
-        .post(Uri.parse(baseUrl + 'rest_api_native/RestController.php'), body: {
+        .post(Uri.parse('${baseUrl}rest_api_native/RestController.php'), body: {
       "view": "getAwbNumberForDrs",
       "drs_unique_id": drs_unique_id,
       "page": "1"
@@ -123,7 +123,7 @@ class _DrsAwbListState extends State<DrsAwbList> {
                 ],
               )
             : Center(
-                child: Lottie.asset("images/delivery-loader.json",
+                child: Lottie.asset("images/delivery.json",
                     width: 150, height: 150),
               ));
   }
